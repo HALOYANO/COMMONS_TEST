@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMMONS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">社会経済シミュレーション</p>
+          <h1>COMMONS</h1>
+        </div>
+        <button id="chapter-toggle" class="ghost-button" type="button">第1章を開始</button>
+      </header>
+
+      <main class="layout">
+        <section class="panel status-panel">
+          <h2>社会スコア</h2>
+          <div class="score-grid">
+            <div><span>経済格差</span><strong id="gap-score">50</strong></div>
+            <div><span>信頼</span><strong id="trust-score">50</strong></div>
+            <div><span>時間の豊かさ</span><strong id="time-score">50</strong></div>
+            <div><span>環境</span><strong id="environment-score">50</strong></div>
+          </div>
+        </section>
+
+        <section class="panel players-panel">
+          <h2>プレイヤー</h2>
+          <div id="player-list" class="player-list"></div>
+        </section>
+
+        <section class="panel action-panel">
+          <h2>行動</h2>
+          <div class="actions">
+            <button class="primary" data-action="cooperate">協力する</button>
+            <button data-action="invest">投資する</button>
+            <button data-action="volunteer">時間を提供</button>
+          </div>
+          <div class="policy-box">
+            <h3>緊急議会</h3>
+            <p>提案: 公共交通を拡充</p>
+            <button id="vote-policy" class="secondary" type="button">賛成票を投じる</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
