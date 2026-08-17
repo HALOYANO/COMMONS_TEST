@@ -53,6 +53,43 @@ button.secondary {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.title-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.title-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.start-button {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), #60a5fa);
+  color: #05121d;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 8px 20px rgba(125, 211, 252, 0.3);
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(125, 211, 252, 0.4);
+}
+
 .app-shell {
   max-width: 1200px;
   margin: 0 auto;
