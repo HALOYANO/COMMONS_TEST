@@ -64,11 +64,50 @@ function handleVote() {
 
 const bgmElement = document.getElementById('bgm');
 
+// Fade out the audio over `duration` milliseconds, then pause and reset volume.
+function fadeOutAudio(audio, duration = 2000) {
+  if (!audio) return;
+  const startVolume = audio.volume;
+  if (startVolume <= 0) {
+    audio.pause();
+    audio.currentTime = 0;
+    return;
+  }
+
+  const steps = 20;
+  const stepTime = duration / steps;
+  let currentStep = 0;
+
+  if (audio._fadeInterval) {
+    clearInterval(audio._fadeInterval);
+  }
+
+  audio._fadeInterval = setInterval(() => {
+    currentStep += 1;
+    const newVol = Math.max(0, startVolume * (1 - currentStep / steps));
+    audio.volume = newVol;
+    if (currentStep >= steps) {
+      clearInterval(audio._fadeInterval);
+      audio._fadeInterval = null;
+      audio.pause();
+      audio.currentTime = 0;
+      // restore volume for next play
+      audio.volume = startVolume;
+    }
+  }, stepTime);
+}
+
 chapterToggleButton.addEventListener('click', () => {
-  state.chapter = state.chapter === 1 ? 2 : 1;
+  const wasChapter1 = state.chapter === 1;
+  state.chapter = wasChapter1 ? 2 : 1;
   chapterToggleButton.textContent = state.chapter === 1 ? '第1章を開始' : '第2章へ進む';
-  if (bgmElement) {
+
+  if (!bgmElement) return;
+
+  // If starting chapter (1 -> 2) play from start.
+  if (wasChapter1 && state.chapter === 2) {
     try {
+      bgmElement.volume = 1.0;
       bgmElement.currentTime = 0;
       const p = bgmElement.play();
       if (p && typeof p.then === 'function') {
@@ -77,6 +116,13 @@ chapterToggleButton.addEventListener('click', () => {
     } catch (e) {
       console.warn('BGM playback error:', e);
     }
+    return;
+  }
+
+  // If returning to chapter 1 (2 -> 1), fade out and stop.
+  if (!wasChapter1 && state.chapter === 1) {
+    fadeOutAudio(bgmElement, 2000);
+    return;
   }
 });
 
