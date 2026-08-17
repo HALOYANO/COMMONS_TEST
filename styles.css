@@ -59,7 +59,8 @@ button.secondary {
   height: auto;
   max-height: 40vh;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }
 
 .title-image {
