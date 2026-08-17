@@ -57,13 +57,14 @@ button.secondary {
   position: relative;
   width: 100%;
   height: auto;
+  max-height: 40vh;
   overflow: hidden;
   margin-bottom: 2rem;
 }
 
 .title-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   border-radius: 16px;
