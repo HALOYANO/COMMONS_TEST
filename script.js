@@ -62,9 +62,22 @@ function handleVote() {
   renderStats();
 }
 
+const bgmElement = document.getElementById('bgm');
+
 chapterToggleButton.addEventListener('click', () => {
   state.chapter = state.chapter === 1 ? 2 : 1;
   chapterToggleButton.textContent = state.chapter === 1 ? '第1章を開始' : '第2章へ進む';
+  if (bgmElement) {
+    try {
+      bgmElement.currentTime = 0;
+      const p = bgmElement.play();
+      if (p && typeof p.then === 'function') {
+        p.catch((e) => console.warn('BGM playback failed:', e));
+      }
+    } catch (e) {
+      console.warn('BGM playback error:', e);
+    }
+  }
 });
 
 document.querySelectorAll('[data-action]').forEach((button) => {
