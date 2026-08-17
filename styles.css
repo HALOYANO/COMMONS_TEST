@@ -17,8 +17,9 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #08101e 0%, #101b30 100%);
+  background: url('images/b77ed4e2-98f3-4799-97d0-873c33cfc0f4.png') center/cover no-repeat fixed;
   color: var(--text);
+  min-height: 100vh;
 }
 
 button {
@@ -51,45 +52,6 @@ button.secondary {
 .ghost-button {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.title-section {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-height: 40vh;
-  overflow: hidden;
-  margin-top: 2rem;
-  margin-bottom: 0;
-}
-
-.title-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.start-button {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  padding: 1.2rem 2rem;
-  font-size: 1rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), #60a5fa);
-  color: #05121d;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 8px 20px rgba(125, 211, 252, 0.3);
-}
-
-.start-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(125, 211, 252, 0.4);
 }
 
 .app-shell {
